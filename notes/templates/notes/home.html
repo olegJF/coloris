@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %} Добавить заметку{% endblock %}
+
+{% block content %}
+<div  class="container">
+    
+   <div class="row">
+        <div class="col-md-8 mx-auto ">
+            <h3> Добавить заметку</h3>
+            <form class="update-data-form" action="" method="post">{% csrf_token %}
+                {{form.as_p}}
+                
+                <button type="submit" class='btn btn-success ' >Добавить</button>
+            </form>
+               
+    
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-md-8 mx-auto text-left">
+            <h3 class=" my-3"> 
+                {% if list %}
+                    Ранее опубликованные заметки 
+                {% else %}
+                    Заметок нет
+                {% endif %} 
+            </h3>
+            <hr>
+           {% for obj in list %}
+           <p class=" my-1"> {{obj.text}}</p>
+           <hr>
+           {% endfor%}
+        </div>
+    </div>
+</div>
+{% endblock %}
