@@ -18,7 +18,7 @@ class Note(models.Model):
             return self.text[: 20] + '....'
             
     def save(self, *args, **kwargs):
-            words = set(self.text.split(' '))
+            words = set(self.text.lower().split(' '))
             self.unique_words = len(words)
             super().save(*args, **kwargs)
         
